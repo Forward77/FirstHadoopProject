@@ -22,7 +22,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.epam.hadoop.traffic.executor.TrafficAnalyzer</mainClass>
+              <mainClass>com.epam.hadoop.traffic.executor.RunnerTrafficAnalyzer</mainClass>
             </manifest>
           </archive>
         </configuration>
