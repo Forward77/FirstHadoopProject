@@ -1,13 +1,11 @@
 package com.epam.hadoop.traffic.executor;
 
 import com.epam.hadoop.traffic.combiner.TrafficCombiner;
-import com.epam.hadoop.traffic.map.TrafficMap;
-import com.epam.hadoop.traffic.model.IntPairWritable;
-import com.epam.hadoop.traffic.reduce.TrafficReduce;
+import com.epam.hadoop.traffic.map.TrafficMapper;
+import com.epam.hadoop.traffic.model.IntPairWritableComparable;
 import com.epam.hadoop.traffic.reduce.TrafficReducerForCombiner;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -28,12 +26,12 @@ public class RunnerTrafficAnalyzer {
 
         job.setJarByClass(RunnerTrafficAnalyzer.class);
 
-        job.setMapperClass(TrafficMap.class);
+        job.setMapperClass(TrafficMapper.class);
         job.setCombinerClass(TrafficCombiner.class);
         job.setReducerClass(TrafficReducerForCombiner.class);
 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntPairWritable.class);
+        job.setOutputValueClass(IntPairWritableComparable.class);
 
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);

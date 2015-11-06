@@ -18,6 +18,8 @@ public class AmountAndAverage implements Writable {
         this.amount = amount;
     }
 
+    public AmountAndAverage() { }
+
     public double getAverage() {
         return average;
     }
@@ -49,5 +51,27 @@ public class AmountAndAverage implements Writable {
     @Override
     public String toString() {
         return average + "," + amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AmountAndAverage that = (AmountAndAverage) o;
+
+        if (Double.compare(that.average, average) != 0) return false;
+        return amount == that.amount;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(average);
+        result = (int) (temp ^ (temp >>> 32));
+        result = 31 * result + amount;
+        return result;
     }
 }

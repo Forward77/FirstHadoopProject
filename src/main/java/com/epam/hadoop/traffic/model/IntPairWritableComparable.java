@@ -1,6 +1,7 @@
 package com.epam.hadoop.traffic.model;
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -9,16 +10,16 @@ import java.io.IOException;
 /**
  * Created by Pavlo_Vitynskyi on 11/5/2015.
  */
-public class IntPairWritable implements Writable {
+public class IntPairWritableComparable implements WritableComparable<IntPairWritableComparable> {
     private int left;
     private int right;
 
-    public IntPairWritable(int left, int right) {
+    public IntPairWritableComparable(int left, int right) {
         this.left = left;
         this.right = right;
     }
 
-    public IntPairWritable() {
+    public IntPairWritableComparable() {
     }
 
     public int getLeft() {
@@ -47,5 +48,32 @@ public class IntPairWritable implements Writable {
     public void readFields(DataInput dataInput) throws IOException {
         left = dataInput.readInt();
         right = dataInput.readInt();
+    }
+
+    @Override
+    public int compareTo(IntPairWritableComparable o) {
+        if(left == o.left && right == o.right) {
+            return 0;
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        IntPairWritableComparable that = (IntPairWritableComparable) o;
+
+        if (left != that.left) return false;
+        return right == that.right;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = left;
+        result = 31 * result + right;
+        return result;
     }
 }
