@@ -1,4 +1,4 @@
-package com.epam.hadoop.compression.map;
+package com.epam.hadoop.compression.mapper;
 
 import com.epam.hadoop.compression.model.IntPairWritableComparable;
 import org.apache.hadoop.io.LongWritable;

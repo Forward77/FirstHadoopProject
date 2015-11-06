@@ -1,29 +1,27 @@
-package com.epam.hadoop.traffic.executor;
+package com.epam.hadoop.traffic.driver;
 
 import com.epam.hadoop.traffic.combiner.TrafficCombiner;
-import com.epam.hadoop.traffic.map.TrafficMapper;
+import com.epam.hadoop.traffic.mapper.TrafficMapper;
 import com.epam.hadoop.traffic.model.IntPairWritableComparable;
-import com.epam.hadoop.traffic.reduce.TrafficReducerForCombiner;
+import com.epam.hadoop.traffic.reducer.TrafficReducerForCombiner;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.SequenceFile;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.compress.SnappyCodec;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 /**
- * Created by Pavlo_Vitynskyi on 11/6/2015.
+ * Created by Pavlo_Vitynskyi on 11/4/2015.
  */
-public class RunnerTrafficAnalyzerCompression {
+public class RunnerTrafficAnalyzer {
+
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         conf.set("mapred.textoutputformat.separator", ",");
-
+        
 
         Job job = new Job(conf, "traffic");
 
@@ -33,20 +31,16 @@ public class RunnerTrafficAnalyzerCompression {
         job.setCombinerClass(TrafficCombiner.class);
         job.setReducerClass(TrafficReducerForCombiner.class);
 
-        //SequenceFileOutputFormat.setOutputPath(job, new Path(args[2]));
-        SequenceFileOutputFormat.setOutputCompressionType(job, SequenceFile.CompressionType.BLOCK);
-        SequenceFileOutputFormat.setCompressOutput(job, true);
-        SequenceFileOutputFormat.setOutputCompressorClass(job, SnappyCodec.class);
-
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntPairWritableComparable.class);
 
         job.setInputFormatClass(TextInputFormat.class);
-        job.setOutputFormatClass(SequenceFileOutputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
-        SequenceFileOutputFormat.setOutputPath(job, new Path(args[1]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         job.waitForCompletion(true);
     }
+
 }

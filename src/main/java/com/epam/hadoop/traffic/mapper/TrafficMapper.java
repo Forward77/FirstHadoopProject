@@ -1,4 +1,4 @@
-package com.epam.hadoop.traffic.map;
+package com.epam.hadoop.traffic.mapper;
 
 import com.epam.hadoop.traffic.model.IntPairWritableComparable;
 import org.apache.hadoop.io.LongWritable;

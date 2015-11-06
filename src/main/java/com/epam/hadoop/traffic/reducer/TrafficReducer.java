@@ -1,16 +1,16 @@
-package com.epam.hadoop.compression.reduce;
+package com.epam.hadoop.traffic.reducer;
 
-import com.epam.hadoop.compression.model.AmountAndAverage;
-import com.epam.hadoop.compression.model.IntPairWritableComparable;
+import com.epam.hadoop.traffic.model.AmountAndAverage;
+import com.epam.hadoop.traffic.model.IntPairWritableComparable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
 /**
- * Created by Pavlo_Vitynskyi on 11/5/2015.
+ * Created by Pavlo_Vitynskyi on 11/4/2015.
  */
-public class TrafficReducerForCombiner extends Reducer<Text, IntPairWritableComparable, Text, AmountAndAverage> {
+public class TrafficReducer extends Reducer<Text, IntPairWritableComparable, Text, AmountAndAverage> {
 
     public void reduce(Text key, Iterable<IntPairWritableComparable> values, Context context)
             throws IOException, InterruptedException {
