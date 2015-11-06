@@ -1,9 +1,9 @@
-package com.epam.hadoop.traffic.executor;
+package com.epam.hadoop.compression.executor;
 
-import com.epam.hadoop.traffic.combiner.TrafficCombiner;
-import com.epam.hadoop.traffic.map.TrafficMapper;
-import com.epam.hadoop.traffic.model.IntPairWritableComparable;
-import com.epam.hadoop.traffic.reduce.TrafficReducerForCombiner;
+import com.epam.hadoop.compression.combiner.TrafficCombiner;
+import com.epam.hadoop.compression.map.TrafficMapper;
+import com.epam.hadoop.compression.model.IntPairWritableComparable;
+import com.epam.hadoop.compression.reduce.TrafficReducerForCombiner;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
