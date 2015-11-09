@@ -43,9 +43,9 @@ public class BrowserStatisticMRTest {
 
     @Test
     public void testReducer() {
-        /*List<IntPairWritableComparable> values = new ArrayList<>();
-        values.add(new InternetPacket(1000, 2));
-        values.add(new InternetPacket(500, 1));
+        /*List<InternetPacket> values = new ArrayList<>();
+        values.add(new InternetPacket(100, "opera", 1000));
+        values.add(new InternetPacket(100, "mozilla", 500));
         reduceDriver.withInput(new IntWritable(100), values);
         reduceDriver.withOutput(new IntWritable(100), new AmountAndAverage(500, 1500));
         reduceDriver.runTest();*/
