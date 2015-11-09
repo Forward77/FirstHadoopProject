@@ -20,7 +20,6 @@ import java.util.List;
 public class TrafficMRTest {
     MapDriver<LongWritable, Text, Text, IntPairWritableComparable> mapDriver;
     ReduceDriver<Text, IntPairWritableComparable, Text, AmountAndAverage> reduceDriver;
-    //MapReduceDriver<LongWritable, Text, Text, IntWritable, Text, IntWritable> mapReduceDriver;
 
     @Before
     public void setUp() {
@@ -28,7 +27,6 @@ public class TrafficMRTest {
         TrafficReducerForCombiner reducer = new TrafficReducerForCombiner();
         mapDriver = MapDriver.newMapDriver(mapper);
         reduceDriver = ReduceDriver.newReduceDriver(reducer);
-        //mapReduceDriver = MapReduceDriver.newMapReduceDriver(mapper, reducer);
     }
 
     @Test

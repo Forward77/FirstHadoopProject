@@ -69,15 +69,24 @@ public class InternetPacket implements Writable {
 
         if (userId != that.userId) return false;
         if (data != that.data) return false;
-        return !(browser != null ? !browser.equals(that.browser) : that.browser != null);
+        return browser.equals(that.browser);
 
     }
 
     @Override
     public int hashCode() {
         int result = userId;
-        result = 31 * result + (browser != null ? browser.hashCode() : 0);
+        result = 31 * result + browser.hashCode();
         result = 31 * result + data;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "InternetPacket{" +
+                "userId=" + userId +
+                ", browser='" + browser + '\'' +
+                ", data=" + data +
+                '}';
     }
 }
