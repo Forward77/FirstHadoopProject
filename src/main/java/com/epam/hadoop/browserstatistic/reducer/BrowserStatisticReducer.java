@@ -24,7 +24,7 @@ public class BrowserStatisticReducer extends Reducer<IntWritable, InternetPacket
         for (InternetPacket packet : values) {
             sum += packet.getData();
             amount++;
-            if (!browsers.contains(packet)) {
+            if (!browsers.contains(packet.getBrowser())) {
                 context.getCounter(BrowserEnum.BROWSER.toString(), packet.getBrowser()).increment(1);
                 browsers.add(packet.getBrowser());
             }
