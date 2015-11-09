@@ -2,7 +2,7 @@ package com.epam.hadoop.traffic.driver;
 
 import com.epam.hadoop.traffic.combiner.TrafficCombiner;
 import com.epam.hadoop.traffic.mapper.TrafficMapper;
-import com.epam.hadoop.traffic.model.IntPairWritableComparable;
+import com.epam.hadoop.models.IntPairWritableComparable;
 import com.epam.hadoop.traffic.reducer.TrafficReducerForCombiner;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

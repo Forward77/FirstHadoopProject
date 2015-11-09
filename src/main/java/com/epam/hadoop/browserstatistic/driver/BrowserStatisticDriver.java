@@ -1,12 +1,12 @@
 package com.epam.hadoop.browserstatistic.driver;
 
-import com.epam.hadoop.compression.combiner.TrafficCombiner;
-import com.epam.hadoop.compression.mapper.TrafficMapper;
-import com.epam.hadoop.compression.model.IntPairWritableComparable;
-import com.epam.hadoop.compression.reducer.TrafficReducerForCombiner;
+import com.epam.hadoop.browserstatistic.mapper.BrowserStatisticMapper;
+import com.epam.hadoop.models.InternetPacket;
+import com.epam.hadoop.browserstatistic.reducer.BrowserStatisticReducer;
+import com.epam.hadoop.models.AmountAndAverage;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -26,12 +26,14 @@ public class BrowserStatisticDriver {
 
         job.setJarByClass(BrowserStatisticDriver.class);
 
-        job.setMapperClass(TrafficMapper.class);
-        job.setCombinerClass(TrafficCombiner.class);
-        job.setReducerClass(TrafficReducerForCombiner.class);
+        job.setMapperClass(BrowserStatisticMapper.class);
+        job.setReducerClass(BrowserStatisticReducer.class);
 
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntPairWritableComparable.class);
+        job.setMapOutputKeyClass(IntWritable.class);
+        job.setMapOutputValueClass(InternetPacket.class);
+
+        job.setOutputKeyClass(IntWritable.class);
+        job.setOutputValueClass(AmountAndAverage.class);
 
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
@@ -40,5 +42,14 @@ public class BrowserStatisticDriver {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         job.waitForCompletion(true);
+
+        /*Counters counters = job.getCounters();
+        for (CounterGroup group : counters) {
+            System.out.println("- Counter Group: " + group.getDisplayName() + " (" + group.getName() + ")");
+            System.out.println("  number of counters in this group: " + group.size());
+            for (Counter counter : group) {
+                System.out.println("  - " + counter.getDisplayName() + ": " + counter.getName() + ": "+counter.getValue());
+            }
+        }*/
     }
 }

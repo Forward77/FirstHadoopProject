@@ -1,6 +1,6 @@
 package com.epam.hadoop.traffic.combiner;
 
-import com.epam.hadoop.traffic.model.IntPairWritableComparable;
+import com.epam.hadoop.models.IntPairWritableComparable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 

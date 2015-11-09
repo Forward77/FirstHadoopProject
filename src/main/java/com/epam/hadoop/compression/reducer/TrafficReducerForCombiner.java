@@ -1,7 +1,8 @@
 package com.epam.hadoop.compression.reducer;
 
-import com.epam.hadoop.compression.model.AmountAndAverage;
-import com.epam.hadoop.compression.model.IntPairWritableComparable;
+
+import com.epam.hadoop.models.AmountAndAverage;
+import com.epam.hadoop.models.IntPairWritableComparable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 

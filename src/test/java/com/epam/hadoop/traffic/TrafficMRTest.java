@@ -1,8 +1,8 @@
 package com.epam.hadoop.traffic;
 
 import com.epam.hadoop.traffic.mapper.TrafficMapper;
-import com.epam.hadoop.traffic.model.AmountAndAverage;
-import com.epam.hadoop.traffic.model.IntPairWritableComparable;
+import com.epam.hadoop.models.AmountAndAverage;
+import com.epam.hadoop.models.IntPairWritableComparable;
 import com.epam.hadoop.traffic.reducer.TrafficReducerForCombiner;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Pavlo_Vitynskyi on 11/6/2015.
  */
-public class MRTest {
+public class TrafficMRTest {
     MapDriver<LongWritable, Text, Text, IntPairWritableComparable> mapDriver;
     ReduceDriver<Text, IntPairWritableComparable, Text, AmountAndAverage> reduceDriver;
     //MapReduceDriver<LongWritable, Text, Text, IntWritable, Text, IntWritable> mapReduceDriver;

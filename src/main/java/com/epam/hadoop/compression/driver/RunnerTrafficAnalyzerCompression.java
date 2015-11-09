@@ -2,9 +2,9 @@ package com.epam.hadoop.compression.driver;
 
 import com.epam.hadoop.compression.combiner.TrafficCombiner;
 import com.epam.hadoop.compression.mapper.TrafficMapper;
-import com.epam.hadoop.compression.model.AmountAndAverage;
-import com.epam.hadoop.compression.model.IntPairWritableComparable;
 import com.epam.hadoop.compression.reducer.TrafficReducerForCombiner;
+import com.epam.hadoop.models.AmountAndAverage;
+import com.epam.hadoop.models.IntPairWritableComparable;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;

@@ -1,4 +1,4 @@
-package com.epam.hadoop.compression.model;
+package com.epam.hadoop.models;
 
 import org.apache.hadoop.io.WritableComparable;
 

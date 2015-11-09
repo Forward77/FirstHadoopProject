@@ -1,7 +1,7 @@
 package com.epam.hadoop.traffic.reducer;
 
-import com.epam.hadoop.traffic.model.AmountAndAverage;
-import com.epam.hadoop.traffic.model.IntPairWritableComparable;
+import com.epam.hadoop.models.AmountAndAverage;
+import com.epam.hadoop.models.IntPairWritableComparable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 

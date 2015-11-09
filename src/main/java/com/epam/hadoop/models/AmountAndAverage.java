@@ -1,4 +1,4 @@
-package com.epam.hadoop.traffic.model;
+package com.epam.hadoop.models;
 
 import org.apache.hadoop.io.Writable;
 
